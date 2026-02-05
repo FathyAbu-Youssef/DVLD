@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.Security.Cryptography;
 
 namespace DVLD__Version_02_.Classes
 {
@@ -15,6 +17,9 @@ namespace DVLD__Version_02_.Classes
 
         internal static bool LoadUserNameAndPassword(ref string UserName, ref string Password)
         {
+            /*
+            Old Way To Load User Credentials From The File
+
             try
             {
                 string FilePath = System.IO.Directory.GetCurrentDirectory() + "\\Data.txt";
@@ -36,11 +41,28 @@ namespace DVLD__Version_02_.Classes
                 MessageBox.Show("An Error Occured!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
+            */
+
+            //The New Way For Loading USER CREDENTIALS From The Registry
+
+            string KeyPath = "HKEY_CURRENT_USER\\Software\\USER-CREDENTIALS";
+
+            try 
+            {
+                UserName = Registry.GetValue(KeyPath, "UserName", null) as string;
+                Password = Registry.GetValue(KeyPath, "Password", null) as string;
+            }
+            catch
+            {
+                return false;
+            }
+            return !(string.IsNullOrEmpty(UserName) && string.IsNullOrEmpty(Password));
         }
 
         internal static void RememberUserNameAndPassword(string UserName, string Password)
         {
-            //Either UserName And Password Are Empty Or Full 
+            /*
+             Old Way To Save User Credentials In A File
             string DirectoryPath = System.IO.Directory.GetCurrentDirectory();
             string FilePath = DirectoryPath + "\\Data.txt";
 
@@ -56,6 +78,22 @@ namespace DVLD__Version_02_.Classes
                 Writer.WriteLine(DataToSave);
                 return;
             }
+            */
+
+            //The New Way For Saving USER CREDENTIALS In The Registry
+            
+            string KeyPath = "HKEY_CURRENT_USER\\Software\\USER-CREDENTIALS";
+
+            try 
+            {
+                Registry.SetValue(KeyPath, "UserName", UserName);
+                Registry.SetValue(KeyPath, "Password", Password);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+       
         }
     }
 }
