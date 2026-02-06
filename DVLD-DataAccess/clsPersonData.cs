@@ -73,6 +73,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -144,6 +145,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -209,6 +211,7 @@ namespace DVLD_DataAccess
             }
             catch(Exception ex) 
             {
+                clsLogger.LogTheException(ex);
                 PersonID = -1;
             }
             finally
@@ -283,10 +286,10 @@ namespace DVLD_DataAccess
                 Connection.Open();
                 RowAffected = Command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 RowAffected = 0;
-                throw;
             }
             finally 
             {
@@ -332,8 +335,9 @@ namespace DVLD_DataAccess
                     dtAllPeople.Load(Reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 dtAllPeople = new DataTable();
                 throw;
             }
@@ -359,8 +363,9 @@ namespace DVLD_DataAccess
                 Connection.Open();
                 RowAffected=Command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 RowAffected = 0;
             }
             finally 
@@ -390,7 +395,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error checking if person exists: {ex.Message}");
+                clsLogger.LogTheException(ex);
             }
             finally
             {
@@ -419,7 +424,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error checking if person exists: {ex.Message}");
+                clsLogger.LogTheException(ex);
             }
             finally
             {

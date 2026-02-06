@@ -30,6 +30,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -53,14 +58,14 @@
     <Compile Include="clsLicenseClassData.cs" />
     <Compile Include="clsLicenseData.cs" />
     <Compile Include="clsLocalDrivingApplicationData.cs" />
+    <Compile Include="clsLogger.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsTestAppointmentData.cs" />
     <Compile Include="clsTestData.cs" />
     <Compile Include="clsTestTypeData.cs" />
-    <Compile Include="clsUser.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-	<EmbeddedResource Include="DVLD_Schema_Setup.sql" />
+    <EmbeddedResource Include="DVLD_Schema_Setup.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

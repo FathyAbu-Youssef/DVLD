@@ -34,8 +34,9 @@ namespace DVLD_DataAccess
                     TestFees =Convert.ToSingle(Reader["TestTypeFees"]);
                 }
             }
-            catch 
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isTestTypeFound = false;        
             }
             finally 
@@ -60,8 +61,9 @@ namespace DVLD_DataAccess
                 SqlDataReader Reader = Command.ExecuteReader();
                 AllTestTypes.Load(Reader);
             }
-            catch (Exception Ex) 
+            catch (Exception ex) 
             {
+                clsLogger.LogTheException(ex);
                 AllTestTypes = new DataTable();
             }
             finally{ Connection.Close(); }
@@ -93,8 +95,9 @@ namespace DVLD_DataAccess
                     NewTestTypeID = NewlyInsertedID;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 NewTestTypeID = -1;
             }
             finally
@@ -130,8 +133,9 @@ namespace DVLD_DataAccess
                     isTestUpdated = true;
                 }
             }
-            catch 
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isTestUpdated = false;
             }
             finally

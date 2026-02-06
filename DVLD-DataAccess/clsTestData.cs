@@ -42,6 +42,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 IsTestFound = false;
             }
             finally
@@ -88,6 +89,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 IsTestFound = false;
             }
             finally
@@ -119,7 +121,7 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                
+                clsLogger.LogTheException(ex);
             }
             finally
             {
@@ -162,8 +164,9 @@ namespace DVLD_DataAccess
                     NewTestID =Convert.ToInt32(Result);
                 }
             }
-            catch 
+            catch(Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 NewTestID = -1;
             }
             finally { Connection.Close(); }
@@ -201,6 +204,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 rowsAffected = 0;
             }
 
@@ -242,6 +246,7 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 PassedTestCount = 0;
             }
 

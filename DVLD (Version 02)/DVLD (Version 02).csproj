@@ -136,6 +136,7 @@
     <Compile Include="Classes\clsGlobal.cs" />
     <Compile Include="Classes\clsUtil.cs" />
     <Compile Include="Classes\clsValidation.cs" />
+    <Compile Include="clsLogger.cs" />
     <Compile Include="Drivers\frmDriversList.cs">
       <SubType>Form</SubType>
     </Compile>

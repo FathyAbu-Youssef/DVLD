@@ -46,7 +46,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex) 
             {
-                //Error Message
+                clsLogger.LogTheException(ex);
                 IsTestAppointFound = false;
             }
             finally
@@ -90,7 +90,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Error Message
+                clsLogger.LogTheException(ex);
                 IsTestAppointFound = false;
             }
             finally
@@ -118,7 +118,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex) 
             {
-                //Error Message
+                clsLogger.LogTheException(ex);
             }
             finally
             {
@@ -152,7 +152,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-
+                clsLogger.LogTheException(ex);
             }
             finally
             {
@@ -199,8 +199,7 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-
+                clsLogger.LogTheException(ex);
             }
 
             finally
@@ -251,7 +250,7 @@ namespace DVLD_DataAccess
             }
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
+                clsLogger.LogTheException(ex);
                 return false;
             }
 
@@ -283,8 +282,7 @@ namespace DVLD_DataAccess
 
             catch (Exception ex)
             {
-                //Console.WriteLine("Error: " + ex.Message);
-
+                clsLogger.LogTheException(ex);
             }
 
             finally

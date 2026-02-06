@@ -34,8 +34,9 @@ namespace DVLD_DataAccess
                     IsActive = Convert.ToByte(Reader["IsActive"]) == 1 ? true : false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -68,8 +69,9 @@ namespace DVLD_DataAccess
                     IsActive = Convert.ToByte(Reader["IsActive"]) == 1 ? true : false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -104,8 +106,9 @@ namespace DVLD_DataAccess
                     IsActive = Convert.ToByte(Reader["IsActive"]) == 1 ? true : false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+               clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -141,8 +144,9 @@ namespace DVLD_DataAccess
                     UserID = Convert.ToInt32(result);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 UserID = -1;
             }
             finally
@@ -175,8 +179,9 @@ namespace DVLD_DataAccess
                 Connection.Open();
                 RowAffected = Command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 return false;
             }
             finally
@@ -209,8 +214,9 @@ select U.UserID ,U.PersonID,
                 SqlDataReader Reader = Command.ExecuteReader();
                     dtAllUsers.Load(Reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 dtAllUsers = null;
             }
             finally
@@ -234,8 +240,9 @@ select U.UserID ,U.PersonID,
                 Connection.Open();
                 RowAffected = Command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 RowAffected = 0;
             }
             finally
@@ -263,8 +270,9 @@ select U.UserID ,U.PersonID,
                     isFound = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -292,8 +300,9 @@ select U.UserID ,U.PersonID,
                     isFound = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
@@ -322,8 +331,9 @@ select U.UserID ,U.PersonID,
                     isFound = true;
                 }
             }
-            catch
+            catch (Exception ex) 
             {
+                clsLogger.LogTheException(ex);
                 isFound = false;
             }
             finally
