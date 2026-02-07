@@ -10,6 +10,6 @@ namespace DVLD_DataAccess
 {
     internal class clsDataAccessSettings
     {
-        public static string ConnectionString = "Server=.;Database=DVLD;Integrated Security=True;";
+        public static string ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
     }
 }
