@@ -21,7 +21,9 @@ namespace DVLD__Version_02_.Login
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            clsUser User = clsUser.FindByUserNameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+            string HashUserInputPassword = clsComputeHash.ComputeHash(txtPassword.Text.Trim());
+
+            clsUser User = clsUser.FindByUserNameAndPassword(txtUserName.Text.Trim(), HashUserInputPassword);
 
             if (User != null) 
             {
@@ -32,6 +34,7 @@ namespace DVLD__Version_02_.Login
                 else 
                 {
                     clsGlobal.RememberUserNameAndPassword("", "");
+
                 }
 
                 if (!User.IsActive) 

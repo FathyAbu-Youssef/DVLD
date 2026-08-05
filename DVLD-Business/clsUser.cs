@@ -49,6 +49,12 @@ namespace DVLD_Business
 
         private bool _AddNewUser()
         {
+            /*
+             hashing the password of the new user before saving.
+             */
+
+            this.Password = clsComputeHash.ComputeHash(this.Password);
+
             this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
             return this.UserID != -1;
         }

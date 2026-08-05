@@ -37,13 +37,13 @@ namespace DVLD__Version_02_.Users
         {
             _User = clsUser.FindByUserID(_UserID);
             ctrlPersonCardWithFilter1.FilterEanabled = false;
-            if( _User == null ) 
+            if (_User == null)
             {
                 MessageBox.Show("This Person Not Here", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            lbUserId.Text= _UserID.ToString();
+            lbUserId.Text = _UserID.ToString();
             txtPassword.Text = _User.Password;
             txtUserName.Text = _User.UserName;
             txtConfirmPassword.Text = _User.Password;
@@ -71,14 +71,20 @@ namespace DVLD__Version_02_.Users
             cbIsActive.Checked = true;
         }
 
+        private void _DisablePasswordControls()
+        {
+            txtPassword.Enabled = false;
+            txtConfirmPassword.Enabled = false;
+        }
         private void frmAdd_UpdateUser_Load(object sender, EventArgs e)
         {
             _ResetDefaaultValues();
             if (_Mode == enMode.Update)  
             {
+                /*disable these controls because we don't need the user to update the password form this form*/
+                _DisablePasswordControls();
                 _LoadData();
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -138,7 +144,7 @@ namespace DVLD__Version_02_.Users
             } 
 
             _User.UserName = txtUserName.Text;
-            _User.Password = txtPassword.Text;
+            _User.Password =  txtPassword.Text;
             _User.IsActive = cbIsActive.Checked;
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             if (_User.Save())
@@ -148,6 +154,9 @@ namespace DVLD__Version_02_.Users
                 lbHeader.Text = "Update User";
                 this.Text = "Update User";
                 MessageBox.Show("Person Saved Successfully", "Success", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                _DisablePasswordControls();
+                txtPassword.Text = _User.Password;
+                txtConfirmPassword.Text = _User.Password;
             }
             else
             {

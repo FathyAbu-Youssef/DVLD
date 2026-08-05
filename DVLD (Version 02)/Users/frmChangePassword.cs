@@ -48,7 +48,15 @@ namespace DVLD__Version_02_.Users
 
         private void txtCurrentPassword_Validating(object sender, CancelEventArgs e)
         {
-            if ((txtCurrentPassword.Text.Trim() != _User.Password.Trim()) 
+            /*
+            1: get the digest of the password that entered by the user.
+            2: we already stored the hashed user password in the database. 
+            3: then we compare both hashed passwords.
+            */
+
+            string CurrentHashedPassword = clsComputeHash.ComputeHash(txtCurrentPassword.Text.Trim());
+
+            if ((CurrentHashedPassword != _User.Password.Trim()) 
                 || string.IsNullOrEmpty(txtCurrentPassword.Text.Trim()))
             {
                 errorProvider1.SetError(txtCurrentPassword, "Wrong Current Password");

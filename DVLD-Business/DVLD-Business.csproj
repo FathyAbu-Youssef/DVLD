@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsComputeHash.cs" />
     <Compile Include="clsInitializer.cs" />
     <Compile Include="clsApplication.cs" />
     <Compile Include="clsApplicationType.cs" />
